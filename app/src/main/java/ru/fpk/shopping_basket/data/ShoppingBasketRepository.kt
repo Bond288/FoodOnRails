@@ -2,7 +2,7 @@ package ru.fpk.shopping_basket.data
 
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
-import ru.fpk.meal.Meal
+import ru.fpk.meal.data.Meal
 
 class ShoppingBasketRepository {
     private val mealList = mutableListOf<Meal>()

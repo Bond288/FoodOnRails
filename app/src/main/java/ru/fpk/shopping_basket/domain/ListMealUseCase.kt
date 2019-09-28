@@ -2,7 +2,7 @@ package ru.fpk.shopping_basket.domain
 
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
-import ru.fpk.meal.Meal
+import ru.fpk.meal.data.Meal
 import ru.fpk.shopping_basket.data.ShoppingBasketRepository
 import javax.inject.Inject
 import javax.inject.Singleton

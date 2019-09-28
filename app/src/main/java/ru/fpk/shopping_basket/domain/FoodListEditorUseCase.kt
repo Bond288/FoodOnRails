@@ -1,6 +1,6 @@
 package ru.fpk.shopping_basket.domain
 
-import ru.fpk.meal.Meal
+import ru.fpk.meal.data.Meal
 import ru.fpk.shopping_basket.data.ShoppingBasketRepository
 import javax.inject.Inject
 
