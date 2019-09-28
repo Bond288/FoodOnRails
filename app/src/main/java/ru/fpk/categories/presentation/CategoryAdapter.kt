@@ -11,6 +11,7 @@ import javax.inject.Inject
 class CategoryAdapter @Inject constructor(private val selectCategoryStorage: SelectCategoryStorage) :
     RecyclerView.Adapter<CategoryViewHolder>() {
     private val categories = mutableListOf<Category>()
+    private var selectedPosition = 0
 
     fun set(categories: List<Category>) {
         this.categories.clear()
@@ -19,14 +20,20 @@ class CategoryAdapter @Inject constructor(private val selectCategoryStorage: Sel
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.category_item, parent, false)
         return CategoryViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = categories[position]
         holder.set(category)
-        holder.itemView.setOnClickListener { selectCategoryStorage.changeCategory(category) }
+        holder.itemView.isSelected = position == selectedPosition
+        holder.itemView.setOnClickListener {
+            selectedPosition = holder.adapterPosition
+            selectCategoryStorage.changeCategory(category)
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int = categories.size
