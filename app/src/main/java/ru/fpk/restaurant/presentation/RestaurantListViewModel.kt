@@ -2,14 +2,13 @@ package ru.fpk.restaurant.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import ru.fpk.mvvm.RxViewModel
 import ru.fpk.restaurant.data.Restaurant
-import ru.fpk.restaurant.domain.ReastaurantListUseCase
+import ru.fpk.restaurant.domain.RestaurantListUseCase
 import javax.inject.Inject
 
-class RestaurantListViewModel @Inject constructor(restaurantUseCase: ReastaurantListUseCase) : RxViewModel() {
+class RestaurantListViewModel @Inject constructor(restaurantUseCase: RestaurantListUseCase) : RxViewModel() {
     private val restaurantListLiveData = MutableLiveData<List<Restaurant>>()
 
     init {
