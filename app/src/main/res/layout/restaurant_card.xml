@@ -17,6 +17,12 @@
             android:layout_height="match_parent"/>
 
         <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_image_gradient"/>
+
+
+        <ImageView
             android:id="@+id/star_image"
             android:layout_width="24dp"
             android:layout_height="24dp"
