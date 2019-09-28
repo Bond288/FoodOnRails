@@ -12,7 +12,7 @@ class NextStationsInfoUseCase @Inject constructor(
     private val passengerInfoProvider: PassengerInfoProvider
 ) {
 
-    fun showNextStations(): Observable<List<Station>> = Observable.interval(0, 30, TimeUnit.SECONDS)
-        .flatMapSingle { passengerInfoProvider.getInfo() }
-        .flatMapSingle { factory.stations(it) }
+    fun showNextStations(): Observable<List<Station>> = passengerInfoProvider.getInfo()
+        .flatMap { factory.stations(it) }
+        .toObservable()
 }
