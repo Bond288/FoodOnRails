@@ -11,4 +11,5 @@
     android:clickable="true"
     android:focusable="true"
     android:gravity="center"
+    android:textSize="18sp"
     tools:text="Американская" />
