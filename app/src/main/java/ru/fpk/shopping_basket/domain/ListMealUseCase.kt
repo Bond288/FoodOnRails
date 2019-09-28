@@ -9,7 +9,6 @@ import javax.inject.Singleton
 
 @Singleton
 class ListMealUseCase @Inject constructor(private val repository: ShoppingBasketRepository) {
-    private val dishesSubject = BehaviorSubject.create<List<Meal>>()
 
     fun dichesList(): Observable<List<Meal>> = repository.mealList()
 

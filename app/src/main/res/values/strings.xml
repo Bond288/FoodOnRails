@@ -25,6 +25,7 @@
     <string name="tab_veg_kitchen">Вегетерианское</string>
     <string name="tab_halal_kitchen">Халяль</string>
     <string name="tab_koshern_kitchen">Кошерно</string>
-<!--    <string name="tab_russian_kitchen">Русская кухня</string>-->
+    <string name="title_buy_button">Купить</string>
+    <!--    <string name="tab_russian_kitchen">Русская кухня</string>-->
 <!--    <string name="tab_russian_kitchen">Русская кухня</string>-->
 </resources>
