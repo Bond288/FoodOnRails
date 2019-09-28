@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    android:id="@+id/restaurant_card_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:layout_marginTop="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
+    app:cardCornerRadius="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,9 +22,10 @@
             android:layout_height="match_parent"/>
 
         <ImageView
+            android:id="@+id/background_gradient"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_image_gradient"/>
+            android:background="@drawable/background_image_gradient_with_round_corners"/>
 
 
         <ImageView

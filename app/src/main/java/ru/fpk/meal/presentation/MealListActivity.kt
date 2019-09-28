@@ -1,9 +1,12 @@
 package ru.fpk.meal.presentation
 
+import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,11 +29,19 @@ class MealListActivity @Inject constructor() : AppCompatActivity() {
         val adapter = scope.getInstance(MealListAdapter::class.java)
         val viewModel = getViewModel(scope, MealListViewModel::class.java)
         val mealList = findViewById<RecyclerView>(R.id.meal_list)
+        val restaurantCardView = findViewById<CardView>(R.id.restaurant_card)
+        val restaurantBackgroundGradient = findViewById<ImageView>(R.id.background_gradient)
+        val restaurantImage = findViewById<ImageView>(R.id.background_image)
         val restaurantName = findViewById<TextView>(R.id.restaurant_name)
         val restaurantRating = findViewById<TextView>(R.id.restaurant_rating)
-        val restaurantImage = findViewById<ImageView>(R.id.background_image)
         val deliveryTime = findViewById<TextView>(R.id.delivery_time)
         val restaurantCategories = findViewById<TextView>(R.id.kitchen_list)
+
+        restaurantCardView.radius = 0f
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            restaurantBackgroundGradient.background = ContextCompat.getDrawable(this, R.drawable.background_image_gradient)
+        }
 
         restaurantName.text = intent.extras.getString("restaurant_name")
         restaurantRating.text = intent.extras.getDouble("restaurant_rating").toString()
