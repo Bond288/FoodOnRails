@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Food on rails</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="tab_restaurant">Рестораны</string>
+    <string name="tab_european_kitchen">Европейская кухня</string>
+    <string name="tab_kaucasian_kitchen">Кавказкая кухня</string>
+    <string name="tab_italian_kitchen">Итальянская кухня</string>
+    <string name="tab_french_kitchen">Французкая кухня</string>
+    <string name="tab_asian_kitchen">Азиатская кухня</string>
+    <string name="tab_meat_kitchen">Мясо</string>
+    <string name="tab_veg_kitchen">Вегетерианское</string>
+    <string name="tab_halal_kitchen">Халяль</string>
+    <string name="tab_koshern_kitchen">Кошерно</string>
+<!--    <string name="tab_russian_kitchen">Русская кухня</string>-->
+<!--    <string name="tab_russian_kitchen">Русская кухня</string>-->
 </resources>
