@@ -7,12 +7,12 @@ import ru.fpk.passeger_info.data.StatitonsFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class NextStationsInfoUseCase @Inject constructor(
+class StationsListUseCase @Inject constructor(
     private val factory: StatitonsFactory,
     private val passengerInfoProvider: PassengerInfoProvider
 ) {
 
-    fun showNextStations(): Observable<List<Station>> = passengerInfoProvider.getInfo()
+    fun stations(): Observable<List<Station>> = passengerInfoProvider.getInfo()
         .flatMap { factory.stations(it) }
         .toObservable()
 }
