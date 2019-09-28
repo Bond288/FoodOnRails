@@ -27,15 +27,32 @@
             android:layout_height="match_parent"
             android:background="@drawable/background_image_gradient_with_round_corners"/>
 
+        <TextView
+            android:id="@+id/restaurant_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textSize="22sp"
+            android:textColor="@color/textPrimaryColor"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="@id/restaurant_layout"
+            app:layout_constraintLeft_toLeftOf="@id/restaurant_layout"
+            app:layout_constraintRight_toRightOf="@id/restaurant_layout"
+            tools:text="Ресторан №1 с длинным длинным названием очеееееень длинным"/>
 
         <ImageView
             android:id="@+id/star_image"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:layout_constraintTop_toTopOf="@id/restaurant_layout"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintTop_toBottomOf="@id/restaurant_name"
             app:layout_constraintLeft_toLeftOf="@id/restaurant_layout"
-            android:src="@drawable/ic_like"
-            android:layout_margin="16dp"/>
+            android:src="@drawable/ic_like"/>
 
         <TextView
             android:id="@+id/restaurant_rating"
@@ -49,30 +66,14 @@
             app:layout_constraintBottom_toBottomOf="@id/star_image"
             tools:text="4.6"/>
 
-        <TextView
-            android:id="@+id/restaurant_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:textSize="22sp"
-            android:textColor="@color/textPrimaryColor"
-            android:maxLines="2"
-            android:ellipsize="end"
-            app:layout_constraintTop_toTopOf="@id/restaurant_layout"
-            app:layout_constraintLeft_toRightOf="@id/restaurant_rating"
-            app:layout_constraintRight_toRightOf="@id/restaurant_layout"
-            tools:text="Ресторан №1 с длинным длинным названием очеееееень длинным"/>
-
         <ImageView
             android:id="@+id/delivery_time_image"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toLeftOf="@id/delivery_time"
-            app:layout_constraintTop_toBottomOf="@id/restaurant_name"
+            app:layout_constraintTop_toTopOf="@id/star_image"
+            app:layout_constraintBottom_toBottomOf="@id/star_image"
             android:src="@drawable/ic_delivery_time"
             />
 
@@ -80,11 +81,11 @@
             android:id="@+id/delivery_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
             android:textColor="@color/textPrimaryColor"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/delivery_time_image"
-            app:layout_constraintBottom_toBottomOf="@id/delivery_time_image"
+            app:layout_constraintTop_toBottomOf="@id/restaurant_name"
+            app:layout_constraintRight_toRightOf="@id/restaurant_layout"
             tools:text="30 минут"/>
 
         <TextView

@@ -16,6 +16,7 @@ import ru.fpk.R
 import ru.fpk.categories.data.Category
 import ru.fpk.restaurant.data.Restaurant
 import ru.fpk.restaurant.domain.RestaurantClick
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class RestaurantListAdapter @Inject constructor(
@@ -61,7 +62,8 @@ class RestaurantListAdapter @Inject constructor(
 
         holder.restaurantRating?.text = restaurant.rating.rating.toString()
         holder.restaurantName?.text = restaurant.name
-        holder.deliveryTime?.text = restaurant.timeOfPreparing.toString()
+        val timeUnit = TimeUnit.MINUTES.convert(restaurant.timeOfPreparing, TimeUnit.MILLISECONDS)
+        holder.deliveryTime?.text = timeUnit.toString() + " мин."
         holder.kitchenList?.text = categories(restaurant.categories)
     }
 

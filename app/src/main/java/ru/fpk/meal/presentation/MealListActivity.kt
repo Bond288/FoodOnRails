@@ -15,6 +15,7 @@ import ru.fpk.R
 import ru.fpk.di.BaseModule
 import ru.fpk.mvvm.getViewModel
 import toothpick.Toothpick
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MealListActivity @Inject constructor() : AppCompatActivity() {
@@ -54,7 +55,8 @@ class MealListActivity @Inject constructor() : AppCompatActivity() {
             .placeholder(R.drawable.ic_launcher_background)
             .into(restaurantImage)
 
-        deliveryTime.text = intent.extras.getLong("restaurant_delivery_time").toString()
+        val timeUnit = TimeUnit.MINUTES.convert(intent.extras.getLong("restaurant_delivery_time"), TimeUnit.MILLISECONDS)
+        deliveryTime.text = timeUnit.toString() + " мин."
         restaurantCategories.text = intent.extras.getString("restaurant_categories")
 
         mealList.layoutManager = LinearLayoutManager(this)
