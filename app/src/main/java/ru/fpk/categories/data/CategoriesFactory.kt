@@ -1,6 +1,8 @@
 package ru.fpk.categories.data
 
-class CategoriesFactory {
+import javax.inject.Inject
+
+class CategoriesFactory @Inject constructor() {
 
     fun categories() = listOf(
         Category("Все", "all", ""),

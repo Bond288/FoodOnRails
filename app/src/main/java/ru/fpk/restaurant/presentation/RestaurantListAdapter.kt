@@ -10,13 +10,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.fpk.R
+import ru.fpk.categories.data.Category
 import ru.fpk.restaurant.data.Restaurant
+import ru.fpk.restaurant.domain.RestaurantClick
 import javax.inject.Inject
 
-class RestaurantListAdapter @Inject constructor(private val context: Context) :
-    RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder>(){
+class RestaurantListAdapter @Inject constructor(
+    private val context: Context,
+    restaurantClick: RestaurantClick
+) : RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder>(){
 
     private val restaurantList = mutableListOf<Restaurant>()
+    private val restaurantClick = restaurantClick
 
     fun setRestaurantList(restaurantList: List<Restaurant>) {
         this.restaurantList.clear()
@@ -36,6 +41,10 @@ class RestaurantListAdapter @Inject constructor(private val context: Context) :
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = restaurantList[position]
 
+        holder.itemView.setOnClickListener {
+            Log.d("ttt", "itemView click")
+            restaurantClick.click(restaurant)
+        }
         val restaurantImageUrl = restaurant.image
         Glide
             .with(context)
@@ -47,11 +56,11 @@ class RestaurantListAdapter @Inject constructor(private val context: Context) :
         holder.restaurantRating?.text = restaurant.rating.rating.toString()
         holder.restaurantName?.text = restaurant.name
         holder.deliveryTime?.text = restaurant.timeOfPreparing.toString()
-        val categories = restaurant.categories
-        val kitchenList = ""
-        categories.forEach { kitchenList + it.name +", "}
-        Log.d("ttt", "kitchenList = $kitchenList")
-        holder.kitchenList?.text = kitchenList
+        holder.kitchenList?.text = categories(restaurant.categories)
+    }
+
+    private fun categories(categories: List<Category>): String {
+        return categories.joinToString {it.name}
     }
 
     class RestaurantViewHolder(restaurantView: View?) : RecyclerView.ViewHolder(restaurantView!!) {

@@ -14,8 +14,6 @@ import toothpick.Toothpick
 
 class RestaurantListFragment : Fragment() {
 
-    private lateinit var restaurantList: RecyclerView
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
     }
@@ -31,8 +29,6 @@ class RestaurantListFragment : Fragment() {
         viewModel.restaurantList().observe(this, Observer {
             adapter.setRestaurantList(it)
         })
-
-        restaurantList.layoutManager = LinearLayoutManager(activity)
     }
 
     override fun onCreateView(
