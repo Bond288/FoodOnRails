@@ -19,6 +19,11 @@
             android:layout_height="match_parent"
             tools:src="@drawable/european3" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_image_gradient_with_round_corners" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -37,9 +42,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
             android:layout_margin="10dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/textPrimaryColor"
+            android:textStyle="bold"
             tools:text="10 руб." />
     </FrameLayout>
 </androidx.cardview.widget.CardView>

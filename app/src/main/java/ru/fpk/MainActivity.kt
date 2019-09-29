@@ -1,5 +1,6 @@
 package ru.fpk
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import ru.fpk.di.BaseModule
+import ru.fpk.shopping_basket.presentation.ShoppingActivity
 import toothpick.Toothpick
 
 class MainActivity : AppCompatActivity() {
@@ -59,7 +61,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
+            R.id.buy -> showBuy()
             else -> false
         }
+    }
+
+    private fun showBuy(): Boolean {
+        val intent = Intent(this, ShoppingActivity::class.java)
+        startActivity(intent)
+        return true
     }
 }
