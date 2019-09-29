@@ -8,8 +8,13 @@ class StatitonsFactory @Inject constructor() {
 
     fun stations(passenger: Passenger) = Single.just(
         listOf(
-            Station("первая", Calendar.getInstance()),
-            Station("Вторая", Calendar.getInstance())
+            Station("Аргыз", Calendar.getInstance()),
+            Station("Дружинино", Calendar.getInstance()),
+            Station("Екатеринбург Пасс.", Calendar.getInstance()),
+            Station("Тюмень", Calendar.getInstance()),
+            Station("Ишим", Calendar.getInstance()),
+            Station("Омск", Calendar.getInstance()),
+            Station("Барабинск", Calendar.getInstance())
         )
     )
 }
