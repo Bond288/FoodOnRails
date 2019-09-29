@@ -6,7 +6,6 @@
     android:layout_height="34dp"
     android:layout_margin="4dp"
     android:paddingLeft="2dp"
-    android:textColor=""
     android:paddingRight="2dp"
     android:background="@drawable/tab_selector"
     android:clickable="true"

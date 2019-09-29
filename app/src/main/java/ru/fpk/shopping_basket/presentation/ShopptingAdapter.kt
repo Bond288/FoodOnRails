@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.fpk.R
 import ru.fpk.meal.data.Meal
+import ru.fpk.shopping_basket.domain.FoodListEditorUseCase
 import javax.inject.Inject
 
-class ShopptingAdapter @Inject constructor() : RecyclerView.Adapter<FoodViewHolder>() {
+class ShopptingAdapter @Inject constructor(private val foodListEditorUseCase: FoodListEditorUseCase) :
+    RecyclerView.Adapter<FoodViewHolder>() {
     private val selectedFood = mutableListOf<Meal>()
 
     fun set(meals: List<Meal>) {
@@ -29,4 +31,9 @@ class ShopptingAdapter @Inject constructor() : RecyclerView.Adapter<FoodViewHold
     }
 
     override fun getItemCount(): Int = selectedFood.size
+
+    fun remove(position: Int) {
+        val meal = selectedFood[position]
+        foodListEditorUseCase.remove(meal)
+    }
 }
