@@ -1,7 +1,10 @@
 package ru.fpk.meal.presentation
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +17,7 @@ import com.bumptech.glide.Glide
 import ru.fpk.R
 import ru.fpk.di.BaseModule
 import ru.fpk.mvvm.getViewModel
+import ru.fpk.shopping_basket.presentation.ShoppingActivity
 import toothpick.Toothpick
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -65,6 +69,25 @@ class MealListActivity @Inject constructor() : AppCompatActivity() {
         viewModel.mealList().observe(this, Observer {
             adapter.setMealList(it)
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.meal_list, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.buy -> showBuy()
+            else -> false
+        }
+    }
+
+    private fun showBuy(): Boolean {
+        val intent = Intent(this, ShoppingActivity::class.java)
+        startActivity(intent)
+        return true
     }
 
     override fun onDestroy() {
