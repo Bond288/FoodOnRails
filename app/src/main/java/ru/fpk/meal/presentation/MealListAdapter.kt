@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,9 +12,10 @@ import com.bumptech.glide.Glide
 import ru.fpk.R
 import ru.fpk.meal.data.Meal
 import ru.fpk.meal.domain.MealClick
+import ru.fpk.shopping_basket.data.ShoppingBasketRepository
 import javax.inject.Inject
 
-class MealListAdapter @Inject constructor(private val context: Context) :
+class MealListAdapter @Inject constructor(private val context: Context, private val shoppingRepository: ShoppingBasketRepository) :
     RecyclerView.Adapter<MealListAdapter.MealViewHolder>(){
 
     private val mealList = mutableListOf<Meal>()
@@ -48,6 +50,8 @@ class MealListAdapter @Inject constructor(private val context: Context) :
         holder.mealName?.text = meal.name
         holder.ingredients?.text = ingredients(meal.ingredients)
         holder.price?.text = meal.price.toString()
+        holder.buyButton?.setOnClickListener { shoppingRepository.add(meal) }
+
     }
 
     private fun ingredients(ingredients: List<String>): String {
@@ -59,12 +63,14 @@ class MealListAdapter @Inject constructor(private val context: Context) :
         var mealName: TextView? = null
         var ingredients: TextView? = null
         var price: TextView? = null
+        var buyButton: ImageButton? = null
 
         init {
             backgroundImage = mealView?.findViewById(R.id.meal_background_image)
             mealName = mealView?.findViewById(R.id.meal_name)
             ingredients = mealView?.findViewById(R.id.meal_ingradients)
             price = mealView?.findViewById(R.id.meal_price)
+            buyButton = mealView?.findViewById(R.id.buy_button)
         }
     }
 }
