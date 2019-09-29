@@ -1,10 +1,12 @@
 package ru.fpk.shopping_basket.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -16,6 +18,11 @@ import ru.fpk.mvvm.getViewModel
 import toothpick.Toothpick
 
 class ShoppingActivity : AppCompatActivity() {
+
+    companion object {
+        private const val REQUEST_CODE = 100
+    }
+
     private var adapter: ShopptingAdapter? = null
     private var summTextView: TextView? = null
     private var emptyTextView: TextView? = null
@@ -36,7 +43,18 @@ class ShoppingActivity : AppCompatActivity() {
         val viewModel = getViewModel(scope, ShoppingViewModel::class.java)
         viewModel.list().observe(this, Observer { change(it) })
         viewModel.price().observe(this, Observer { changePrice(it) })
-        payedButton?.setOnClickListener { viewModel.payed() }
+        payedButton?.setOnClickListener {
+            val intent = Intent(this, BankCardActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+            viewModel.payed()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE) {
+            Toast.makeText(this, "Успешно оплачено", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDestroy() {

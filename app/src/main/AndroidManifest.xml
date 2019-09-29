@@ -14,6 +14,7 @@
         android:name=".App">
 
         <activity android:name=".meal.presentation.MealListActivity"></activity>
+        <activity android:name=".shopping_basket.presentation.BankCardActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
