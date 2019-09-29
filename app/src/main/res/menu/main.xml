@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/buy"
+        android:icon="@drawable/baseline_local_grocery_store_white_24"
+        android:title="Корзина"
+        android:orderInCategory="300"
+        app:showAsAction="ifRoom"/>
 </menu>

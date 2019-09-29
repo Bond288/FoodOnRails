@@ -5,8 +5,11 @@ import io.reactivex.Single
 import io.reactivex.subjects.BehaviorSubject
 import ru.fpk.meal.data.Meal
 import ru.fpk.rx.startIfEmpty
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ShoppingBasketRepository {
+@Singleton
+class ShoppingBasketRepository @Inject constructor(){
     private val mealList = mutableListOf<Meal>()
     private val mealListSubject = BehaviorSubject.create<List<Meal>>()
 
@@ -25,8 +28,7 @@ class ShoppingBasketRepository {
         reload()
     }
 
-    fun mealList() : Observable<List<Meal>> = mealListSubject
-        .startIfEmpty(Single.just<List<Meal>>(mealList))
+    fun mealList() : Observable<List<Meal>> = mealListSubject.startWith(mealList)
 
     private fun reload() {
         mealListSubject.onNext(mealList)
