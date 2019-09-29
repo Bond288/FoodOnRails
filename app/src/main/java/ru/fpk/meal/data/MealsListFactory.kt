@@ -14,25 +14,25 @@ class MealsListFactory @Inject constructor(){
                     Meal(
                         "Ножки",
                         listOf("Курица", "Специи"),
-                        "https://www.google.ru/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjIsr_t5vPkAhWJlosKHdBaAgkQjRx6BAgBEAQ&url=https%3A%2F%2Fmetro.co.uk%2F2019%2F03%2F14%2Fkfc-is-inviting-you-to-come-cook-your-own-chicken-in-their-restaurants-kitchens-8902830%2F&psig=AOvVaw0ciqX43lNHy7FVFl2QCm04&ust=1569769933658961",
+                        "https://s82079.cdn.ngenix.net/eQJqAgBWWoSUiBf7oG3kkfvE.png?dw=230",
                         160.00
                         ),
                     Meal(
                         "Крылья",
                         listOf("Курица", "Специи"),
-                        "https://www.google.ru/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjNq-mf5_PkAhXxtYsKHUIiA7gQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.mirror.co.uk%2Fmoney%2Fkfc-selling-bucket-20-hot-16538298&psig=AOvVaw0ciqX43lNHy7FVFl2QCm04&ust=1569769933658961",
+                        "https://s82079.cdn.ngenix.net/bBT3VJ5NNWmKzcdtJRUTKphs.png?dw=230",
                         120.00
                     ),
                     Meal(
                         "Филе",
                         listOf("Курица", "Специи"),
-                        "https://www.google.ru/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwiowpa55_PkAhUQAhAIHV01CxEQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.ledgerbennett.com%2Fblog%2Fsocial-media-kfc-chicken-gate%2F&psig=AOvVaw0ciqX43lNHy7FVFl2QCm04&ust=1569769933658961",
+                        "https://s82079.cdn.ngenix.net/Kq1eF5NBj287FHbv4gQr8xkb.png?dw=230",
                        200.00
                     ),
                     Meal(
                         "Твистер",
                         listOf("Курица", "Овощи", "Специи"),
-                        "https://www.google.ru/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwi1wq7a5_PkAhWslYsKHSjmB7IQjRx6BAgBEAQ&url=https%3A%2F%2Firecommend.ru%2Fcontent%2Ffastfud-kfc-tvister-dzhunior&psig=AOvVaw0snteOZy0Gv4kMsaXxBlBa&ust=1569770161939496",
+                        "https://s82079.cdn.ngenix.net/MYzJ4vRR5ZbBcbw7DZBvbkEN.png?dw=230",
                         150.00
                     )
                 )
