@@ -1,10 +1,8 @@
 package ru.fpk.shopping_basket.data
 
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.subjects.BehaviorSubject
 import ru.fpk.meal.data.Meal
-import ru.fpk.rx.startIfEmpty
 import javax.inject.Inject
 import javax.inject.Singleton
 
