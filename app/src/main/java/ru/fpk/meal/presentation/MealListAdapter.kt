@@ -1,6 +1,7 @@
 package ru.fpk.meal.presentation
 
 import android.content.Context
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +50,7 @@ class MealListAdapter @Inject constructor(private val context: Context, private 
 
         holder.mealName?.text = meal.name
         holder.ingredients?.text = ingredients(meal.ingredients)
-        holder.price?.text = meal.price.toString()
+        holder.price?.text  = Html.fromHtml("${meal.price} &#8381;")
         holder.buyButton?.setOnClickListener { shoppingRepository.add(meal) }
 
     }
