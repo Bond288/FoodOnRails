@@ -8,14 +8,18 @@ import androidx.lifecycle.MutableLiveData
 import ru.fpk.categories.data.Category
 import ru.fpk.meal.presentation.MealListActivity
 import ru.fpk.mvvm.RxViewModel
+import ru.fpk.passeger_info.data.Station
+import ru.fpk.passeger_info.domain.StationsListUseCase
 import ru.fpk.restaurant.data.Restaurant
 import ru.fpk.restaurant.domain.RestaurantClick
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val context: Context,
-    restaurantClick: RestaurantClick
+    restaurantClick: RestaurantClick,
+    stationsListUseCase: StationsListUseCase
 ) : RxViewModel() {
+    private val stationLiveData = MutableLiveData<List<Station>>()
 
     init {
         add(restaurantClick.observe().subscribe(
@@ -26,7 +30,15 @@ class HomeViewModel @Inject constructor(
             },
             {}
         ))
+        add(stationsListUseCase.stations()
+            .subscribe({
+                stationLiveData.value = it
+            },{
+
+            }))
     }
+
+    fun stations() : LiveData<List<Station>> = stationLiveData
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
