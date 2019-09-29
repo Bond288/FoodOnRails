@@ -1,6 +1,5 @@
 package ru.fpk
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -14,7 +13,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import ru.fpk.di.BaseModule
-import ru.fpk.shopping_basket.presentation.ShoppingActivity
 import toothpick.Toothpick
 
 class MainActivity : AppCompatActivity() {
@@ -36,8 +34,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_home, R.id.nav_discounts
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -62,14 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
-            R.id.buy -> showBuy()
             else -> false
         }
-    }
-
-    private fun showBuy(): Boolean {
-        val intent = Intent(this, ShoppingActivity::class.java)
-        startActivity(intent)
-        return true
     }
 }

@@ -16,26 +16,26 @@ class RestaurantFactory @Inject constructor() {
         Restaurant(
             "Macdonalds",
             "https://bipbap.ru/wp-content/uploads/2017/06/aa017506ac88f7bb89918bc1ffb.jpg",
-            Popularity(4.6, emptyList()),
+            Popularity(4.5, emptyList()),
             40 * 60 * 1000,
             listOf(Category("Американская", "american", ""))
         ),
         Restaurant(
             "Dodo Pizza",
             "https://bipbap.ru/wp-content/uploads/2017/06/eda-ne-tolko-005.jpg",
-            Popularity(4.6, emptyList()),
+            Popularity(4.3, emptyList()),
             25 * 60 * 1000,
             listOf(Category("Итальянская", "italian", ""), Category("Американская", "american", ""))
         ),
         Restaurant(
-            "harakiri",
+            "Harakiri",
             "https://bipbap.ru/wp-content/uploads/2017/06/4-3.jpg",
-            Popularity(4.6, emptyList()),
+            Popularity(3.7, emptyList()),
             90 * 60 * 1000,
             listOf(Category("Восточная", "asia", ""))
         ),
         Restaurant(
-            "Элитный", "", Popularity(4.6, emptyList()), 60 * 60 * 1000, listOf(
+            "Элитный", "https://v-georgia-com.exactdn.com/wp-content/uploads/2016/03/221.jpg?lossy=1&quality=60&w=1200&ssl=1", Popularity(4.8, emptyList()), 60 * 60 * 1000, listOf(
                 Category("Восточная", "asia", ""),
                 Category("Мексиканская", "mehico", ""),
                 Category("Русская", "russia", ""),
