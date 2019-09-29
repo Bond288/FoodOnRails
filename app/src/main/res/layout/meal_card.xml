@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:src="@drawable/baseline_local_grocery_store_white_24"/>
+            android:src="@drawable/shopping_card"/>
 
         <TextView
             android:id="@+id/meal_ingradients"

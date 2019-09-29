@@ -16,8 +16,11 @@ import ru.fpk.meal.domain.MealClick
 import ru.fpk.shopping_basket.data.ShoppingBasketRepository
 import javax.inject.Inject
 
-class MealListAdapter @Inject constructor(private val context: Context, private val shoppingRepository: ShoppingBasketRepository) :
-    RecyclerView.Adapter<MealListAdapter.MealViewHolder>(){
+class MealListAdapter @Inject constructor(
+    private val context: Context,
+    private val shoppingRepository: ShoppingBasketRepository
+) :
+    RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
 
     private val mealList = mutableListOf<Meal>()
 
@@ -32,7 +35,8 @@ class MealListAdapter @Inject constructor(private val context: Context, private 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
-        val mealView = LayoutInflater.from(parent.context).inflate(R.layout.meal_card, parent, false)
+        val mealView =
+            LayoutInflater.from(parent.context).inflate(R.layout.meal_card, parent, false)
         return MealViewHolder(mealView)
     }
 
@@ -50,9 +54,16 @@ class MealListAdapter @Inject constructor(private val context: Context, private 
 
         holder.mealName?.text = meal.name
         holder.ingredients?.text = ingredients(meal.ingredients)
-        holder.price?.text  = Html.fromHtml("${meal.price} &#8381;")
-        holder.buyButton?.setOnClickListener { shoppingRepository.add(meal) }
-
+        holder.price?.text = Html.fromHtml("${meal.price} &#8381;")
+        holder.buyButton?.setOnClickListener {
+            if(holder.buyButton?.isSelected == true){
+                holder.buyButton?.isSelected = false
+                shoppingRepository.remove(meal)
+            } else {
+                holder.buyButton?.isSelected = true
+                shoppingRepository.add(meal)
+            }
+        }
     }
 
     private fun ingredients(ingredients: List<String>): String {
