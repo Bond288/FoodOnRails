@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selected_mills"
         android:layout_above="@+id/sum_info"
@@ -13,22 +14,36 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/shopping_item"/>
 
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:text="В корзине пусто"/>
     <FrameLayout
         android:id="@+id/sum_info"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="78dp"
         android:layout_alignParentBottom="true">
 
         <TextView
             android:id="@+id/sum"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="left|center_vertical"
+            android:textSize="24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="96.0 руб"/>
 
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/buy_button"
             android:layout_width="wrap_content"
+            android:src="@drawable/baseline_payment_white_36"
             android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
             android:text="@string/title_buy_button"/>
     </FrameLayout>
