@@ -3,17 +3,14 @@ package ru.fpk.shopping_basket.presentation
 import android.os.Bundle
 import android.text.InputType
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.braintreepayments.cardform.view.CardForm
+import dagger.android.support.DaggerAppCompatActivity
 import ru.fpk.R
-import toothpick.Toothpick
 
-
-class BankCardActivity : AppCompatActivity() {
+class BankCardActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val scope = Toothpick.openScopes(application, this)
         setContentView(R.layout.activity_bank_card)
         val cardForm = findViewById<CardForm>(R.id.card_form)
         val buyButton = findViewById<Button>(R.id.btnBuy)
@@ -33,10 +30,5 @@ class BankCardActivity : AppCompatActivity() {
             setResult(100)
             finish()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toothpick.closeScope(this)
     }
 }

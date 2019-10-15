@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import dagger.android.support.DaggerFragment
 import ru.fpk.R
+import ru.fpk.mvvm.DependencyInjectionFactory
 import ru.fpk.mvvm.getViewModel
-import toothpick.Toothpick
+import javax.inject.Inject
 
-class HomeFragment : Fragment() {
-
+class HomeFragment : DaggerFragment() {
+    @Inject
+    lateinit var viewModelFactory: DependencyInjectionFactory
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
@@ -21,8 +22,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val scope = Toothpick.openScopes(this.activity!!.application, this.activity, this)
-        homeViewModel = getViewModel(scope, HomeViewModel::class.java)
+        homeViewModel = getViewModel(viewModelFactory)
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 

@@ -3,21 +3,21 @@ package ru.fpk.mvvm
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import toothpick.Scope
 
-fun <T : ViewModel> Fragment.getViewModel(scope: Scope, modelClass: Class<T>): T {
-        return ViewModelProviders
-            .of(this, DependencyInjectionFactory(scope))
-            .get(modelClass)
-    }
+inline fun <reified T : ViewModel> Fragment.getViewModel(
+    factory: ViewModelProvider.Factory
+): T {
+    return ViewModelProviders
+        .of(this, factory)
+        .get(T::class.java)
+}
 
-
-fun <T : ViewModel> FragmentActivity.getViewModel(
-        scope: Scope,
-        modelClass: Class<T>
-    ): T {
-        return ViewModelProviders
-            .of(this, DependencyInjectionFactory(scope))
-            .get(modelClass)
-    }
+inline fun <reified T : ViewModel> FragmentActivity.getViewModel(
+    factory: ViewModelProvider.Factory
+): T {
+    return ViewModelProviders
+        .of(this, factory)
+        .get(T::class.java)
+}

@@ -2,12 +2,12 @@ package ru.fpk.mvvm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import javax.inject.Inject
+import javax.inject.Provider
+import javax.inject.Singleton
 
-import toothpick.Scope
+@Singleton
+class DependencyInjectionFactory @Inject constructor(private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>) : ViewModelProvider.Factory {
 
-class DependencyInjectionFactory internal constructor(private val scope: Scope) : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return scope.getInstance(modelClass)
-    }
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = viewModels[modelClass]?.get() as T
 }

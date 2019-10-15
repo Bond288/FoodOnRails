@@ -4,25 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.android.support.DaggerFragment
 import ru.fpk.R
+import ru.fpk.mvvm.DependencyInjectionFactory
 import ru.fpk.mvvm.getViewModel
-import toothpick.Toothpick
+import javax.inject.Inject
 
-class RestaurantListFragment : Fragment() {
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
+class RestaurantListFragment : DaggerFragment() {
+    @Inject
+    lateinit var viewModelFactory: DependencyInjectionFactory
+    @Inject
+    lateinit var adapter: RestaurantListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val scope = Toothpick.openScopes(this.activity!!.application, this.activity, this)
-        val adapter = scope.getInstance(RestaurantListAdapter::class.java)
-        val viewModel = getViewModel(scope, RestaurantListViewModel::class.java)
+        val viewModel:RestaurantListViewModel = getViewModel(viewModelFactory)
         val restaurantList = view.findViewById<RecyclerView>(R.id.restaurant_list)
         restaurantList.layoutManager = LinearLayoutManager(activity)
         restaurantList.adapter = adapter
@@ -35,12 +34,5 @@ class RestaurantListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_restaurant_list, container, false)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Toothpick.closeScope(this)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_restaurant_list, container, false)
 }

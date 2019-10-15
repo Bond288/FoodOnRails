@@ -1,12 +1,10 @@
 package ru.fpk
 
-import android.app.Application
-import toothpick.Toothpick
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
+import ru.fpk.di.DaggerAppComponent
 
-class App : Application() {
+class App : DaggerApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
-        Toothpick.openScope(this)
-    }
+    override fun applicationInjector(): AndroidInjector<App> = DaggerAppComponent.builder().build()
 }

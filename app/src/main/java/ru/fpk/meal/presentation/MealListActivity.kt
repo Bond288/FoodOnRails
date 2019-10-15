@@ -15,24 +15,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.fpk.R
-import ru.fpk.di.BaseModule
+import ru.fpk.mvvm.DependencyInjectionFactory
 import ru.fpk.mvvm.getViewModel
 import ru.fpk.shopping_basket.presentation.ShoppingActivity
-import toothpick.Toothpick
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MealListActivity @Inject constructor() : AppCompatActivity() {
+    @Inject
+    lateinit var viewModelFactory: DependencyInjectionFactory
+    @Inject
+    lateinit var adapter: MealListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal_list)
-        val scope = Toothpick.openScopes(application, this)
-
-        scope.installModules(BaseModule(this))
-
-        val adapter = scope.getInstance(MealListAdapter::class.java)
-        val viewModel = getViewModel(scope, MealListViewModel::class.java)
+        val viewModel: MealListViewModel = getViewModel(viewModelFactory)
         val mealList = findViewById<RecyclerView>(R.id.meal_list)
         val restaurantCardView = findViewById<CardView>(R.id.restaurant_card)
         val restaurantBackgroundGradient = findViewById<ImageView>(R.id.background_gradient)
@@ -60,7 +58,7 @@ class MealListActivity @Inject constructor() : AppCompatActivity() {
             .into(restaurantImage)
 
         val timeUnit = TimeUnit.MINUTES.convert(intent.extras.getLong("restaurant_delivery_time"), TimeUnit.MILLISECONDS)
-        deliveryTime.text = timeUnit.toString() + " мин."
+        deliveryTime.text = "$timeUnit мин."
         restaurantCategories.text = intent.extras.getString("restaurant_categories")
 
         mealList.layoutManager = LinearLayoutManager(this)
@@ -88,10 +86,5 @@ class MealListActivity @Inject constructor() : AppCompatActivity() {
         val intent = Intent(this, ShoppingActivity::class.java)
         startActivity(intent)
         return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toothpick.closeScope(this)
     }
 }
