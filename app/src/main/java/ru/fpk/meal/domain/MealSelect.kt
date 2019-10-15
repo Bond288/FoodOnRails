@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MealClick @Inject constructor(){
+class MealSelect @Inject constructor(){
 
     private val click: BehaviorSubject<Meal> = BehaviorSubject.create()
 
@@ -15,7 +15,7 @@ class MealClick @Inject constructor(){
         click.onNext(restaurantClicked)
     }
 
-    fun observe(): Observable<Meal> {
+    fun meal(): Observable<Meal> {
         return click
     }
 }

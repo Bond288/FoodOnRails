@@ -1,4 +1,4 @@
-package ru.fpk.meal.presentation
+package ru.fpk.meal.presentation.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -30,7 +30,9 @@ class MealListViewModel @Inject constructor(
                 .subscribe({
                     mealListLiveData.value = it
                 },
-                    {})
+                    {
+                        mealListLiveData.value = emptyList()
+                    })
         )
     }
 

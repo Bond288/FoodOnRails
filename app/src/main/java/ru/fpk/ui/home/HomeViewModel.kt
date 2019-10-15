@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.fpk.categories.data.Category
-import ru.fpk.meal.presentation.MealListActivity
+import ru.fpk.meal.presentation.list.view.MealListActivity
 import ru.fpk.mvvm.RxViewModel
 import ru.fpk.passeger_info.data.Station
 import ru.fpk.passeger_info.domain.StationsListUseCase

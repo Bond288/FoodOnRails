@@ -1,4 +1,4 @@
-package ru.fpk.meal.presentation
+package ru.fpk.meal.presentation.list.view
 
 import android.content.Intent
 import android.os.Build
@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.fpk.R
 import ru.fpk.di.BaseModule
+import ru.fpk.meal.presentation.list.MealListAdapter
+import ru.fpk.meal.presentation.list.MealListViewModel
 import ru.fpk.mvvm.getViewModel
 import ru.fpk.shopping_basket.presentation.ShoppingActivity
 import toothpick.Toothpick

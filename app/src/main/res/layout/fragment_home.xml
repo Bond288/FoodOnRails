@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/categories"
-        class="ru.fpk.categories.presentation.CategoryFragment"
+        class="ru.fpk.categories.presentation.view.CategoryFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/stations_spinner"
